@@ -1,4 +1,7 @@
 import os
+import datetime
+now = datetime.datetime.now()
+
 def createClass():
     #Creates txt file for class roster
     className = input("Type name of class you wish to create:")
@@ -37,11 +40,12 @@ def rosterList(className):
 def classCheckin():
    #Determines class list which will be searched
     Class = input("Which class do you want to take attendence for?")
+    
     CheckIn = open(Class +" Roster", "r+")
     lines = CheckIn.readlines()
     Present = []
     while True:
-        ID = input("Please Scan ID Card")
+        ID = input("Please Scan ID Card: ")
         if ID == "exit":
             break
         else:
@@ -65,5 +69,12 @@ def classCheckin():
     for item in absent:
         Attendence.write(item + "\n")
 
-def Clear():
-    #Deletes or clears all attendence files
+
+def Display(AttendenceClass):
+    #Prints Attendence File of specified class
+    date_string = now.strftime("%m/%d/%Y")
+    print("Attendence for: " + AttendenceClass + " Date: " + date_string)
+    display = open(AttendenceClass +" Attendence", "r")
+    lines = display.readlines()
+    for row in lines:
+        print(row)
