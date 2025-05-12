@@ -111,4 +111,16 @@ def DisplayRoster(RosterClass):
     else:
         print("Attendence file does not exist.")
 
-#def deleteName(file):
+def deleteName(fileName):
+    file = open(fileName + " Roster", "r")
+    lines = file.readlines()
+    file.close()
+
+    file = open(fileName + " Roster", "w")
+    name = input("Type full name of student you wish to delete:")
+    for line in lines: 
+        if 0 == line.find(name):
+            print("Name Deleted")
+        else:
+            file.write(line)
+    
