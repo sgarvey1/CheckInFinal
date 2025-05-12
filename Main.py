@@ -2,4 +2,4 @@ import ClassManager
 #ClassManager.createClass()
 #ClassManager.addStudent()
 #ClassManager.classCheckin()
-#ClassManager.Display("Engineering 1")
+#ClassManager.DisplayRoster("Engineering 1")

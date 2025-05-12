@@ -82,7 +82,7 @@ def classCheckin():
         Attendence.write(item + "\n")
 
 
-def Display(AttendenceClass):
+def DisplayAttendence(AttendenceClass):
     file = (AttendenceClass + " Roster")
     if os.path.isfile(file):  #Checks if file exists
         #Prints Attendence File of specified class
@@ -94,3 +94,21 @@ def Display(AttendenceClass):
             print(row)
     else:
         print("Attendence file does not exist.")
+
+def DisplayRoster(RosterClass):
+    file = (RosterClass + " Roster")
+    if os.path.isfile(file):  #Checks if file exists
+        #Prints Roster File of specified class
+        print("Roster for: " + RosterClass)
+        display = open(RosterClass +" Roster", "r")
+        
+        lines = display.readlines()
+        Names = []
+        for row in lines:
+            Names.insert(1, row.rstrip(",1234567890 \n")) #Strips name of ending ID number
+        for item in Names:
+            print(item + ",")
+    else:
+        print("Attendence file does not exist.")
+
+#def deleteName(file):
