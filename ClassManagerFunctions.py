@@ -6,11 +6,11 @@ now = datetime.datetime.now()
 def createClass():
     #Creates txt file for class roster
     className = input("Type name of class you wish to create: ")
-    file = (className + " Roster")
+    file = (className + " Roster.txt")
     if os.path.isfile(file):  #Checks if file exists
         print("Class already exists.")
     else:
-        Class = open(className + " Roster", "w")
+        Class = open(className + " Roster.txt", "w")
         Class.close() #Closes the file
     print("-"*os.get_terminal_size().columns )
     print("\n")
@@ -19,7 +19,7 @@ def addStudent():
     #Determines class file to access
     Choice = input("Type name of class you wish to add to: ")
     
-    file = (Choice + " Roster")
+    file = (Choice + " Roster.txt")
     if os.path.isfile(file):  #Checks if file exists
         Class = open(file, "r+")
 
@@ -45,7 +45,7 @@ def addStudent():
     print("\n")
 
 def rosterList(className):
-    roster = open(className +" Roster", "r") #Opens Class Roster File in reading mode
+    roster = open(className +" Roster.txt", "r") #Opens Class Roster File in reading mode
     lines = roster.readlines()
     Names = []
     for row in lines:
@@ -55,9 +55,9 @@ def rosterList(className):
 def classCheckin():
    #Determines class list which will be searched
     Class = input("Type name of class you wish to take attendence for: ")
-    file = (Class + " Roster")
+    file = (Class + " Roster.txt")
     if os.path.isfile(file):  #Checks if file exists
-        CheckIn = open(Class +" Roster", "r+")
+        CheckIn = open(Class +" Roster.txt", "r+")
         lines = CheckIn.readlines()
         Present = []
         while True:
@@ -79,7 +79,7 @@ def classCheckin():
         print("Class does not exist.")
 
     #Creates txt file that store attendence information
-    Attendence = open(Class +" Attendence", "w")
+    Attendence = open(Class +" Attendence.txt", "w")
     Attendence.write("Present:\n")
     for item in Present:
         Attendence.write(item + "\n")
@@ -92,12 +92,12 @@ def classCheckin():
 
 
 def DisplayAttendence(AttendenceClass):
-    file = (AttendenceClass + " Roster")
+    file = (AttendenceClass + " Roster.txt")
     if os.path.isfile(file):  #Checks if file exists
         #Prints Attendence File of specified class
         date_string = now.strftime("%m/%d/%Y")
         print("Attendence for: " + AttendenceClass + " Date: " + date_string)
-        display = open(AttendenceClass +" Attendence", "r")
+        display = open(AttendenceClass +" Attendence.txt", "r")
         lines = display.readlines()
         for row in lines:
             print(row)
@@ -108,11 +108,11 @@ def DisplayAttendence(AttendenceClass):
     print("\n")
 
 def DisplayRoster(RosterClass):
-    file = (RosterClass + " Roster")
+    file = (RosterClass + " Roster.txt")
     if os.path.isfile(file):  #Checks if file exists
         #Prints Roster File of specified class
         print("Roster for: " + RosterClass)
-        display = open(RosterClass +" Roster", "r")
+        display = open(RosterClass +" Roster.txt", "r")
         
         lines = display.readlines()
         Names = []
@@ -128,12 +128,12 @@ def DisplayRoster(RosterClass):
 
 def deleteName(fileName):
     #Opens file in read mode; Stores data from file into lines
-    file = open(fileName + " Roster", "r")
+    file = open(fileName + " Roster.txt", "r")
     lines = file.readlines()
     file.close()
 
     #Opens file in write mode(erases file in the process); Adds back names that need to be keeped
-    file = open(fileName + " Roster", "w")
+    file = open(fileName + " Roster.txt", "w")
     name = input("Type full name of student you wish to delete: ")
     for line in lines: 
         if 0 == line.find(name): #Looks to see if name given is in line; find(name) give value of 0 if text is found
@@ -147,10 +147,10 @@ def deleteName(fileName):
 def removeClass():
     #Checks if file exist; then, deletes the file
     file = input("Type class you wish to delete: ")
-    if os.path.exists(file + " Roster"):
-        os.remove(file + " Roster")
-        if os.path.exists(file + " Attendence"):
-            os.remove(file + " Attendence")
+    if os.path.exists(file + " Roster.txt"):
+        os.remove(file + " Roster.txt")
+        if os.path.exists(file + " Attendence.txt"):
+            os.remove(file + " Attendence.txt")
     else:
         print("The file does not exist.")
     

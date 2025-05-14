@@ -3,19 +3,19 @@ import os
 
 while True:
     print("What would you like to do?")
-    print("Add Class (AD) | Remove Class (RC) | Add Student to Class (AS) | Delete Student from Class (DS) | Check-in Class (CC) | Display Class (DC)")
+    print("Add Class (AC) | Remove Class (RC) | Add Student to Class (AS) | Delete Student from Class (DS) | Check-in Class (CC) | Display Class (DC)")
     function = input("Type in letters for one of the above functions: ")
-    if function == "AD":
+    if function == "AC":
         ClassManagerFunctions.createClass()
-    if function == "RC":
+    elif function == "RC":
         ClassManagerFunctions.removeClass()
-    if function == "AS":
+    elif function == "AS":
         ClassManagerFunctions.addStudent()
-    if function == "DS":
+    elif function == "DS":
         ClassManagerFunctions.deleteName(input("Type name of class you wish to delete student from: "))
-    if function == "CC":
+    elif function == "CC":
         ClassManagerFunctions.classCheckin()
-    if function == "DC":
+    elif function == "DC":
         print("Would you like to display class attendence(A) or class roster(R)?")
         DisplayFile = input("Type the letter of the option you choose: ")
         if DisplayFile == "A":
