@@ -1,10 +1,12 @@
 import ClassManager
 while True:
     print("What would you like to do?")
-    print("Add Class (AD) | Add Student to Class (AS) | Delete Student from Class (DS) | Check-in Class (CC) | Display Class (DC)")
+    print("Add Class (AD) | Remove Class (RC) | Add Student to Class (AS) | Delete Student from Class (DS) | Check-in Class (CC) | Display Class (DC)")
     function = input("Type in letters for one of the above functions:")
     if function == "AD":
         ClassManager.createClass()
+    if function == "RC":
+        ClassManager.removeClass()
     if function == "AS":
         ClassManager.addStudent()
     if function == "DS":

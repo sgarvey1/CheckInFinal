@@ -1,5 +1,6 @@
 import os
 import datetime
+from getpass import getpass
 now = datetime.datetime.now()
 
 def createClass():
@@ -11,6 +12,8 @@ def createClass():
     else:
         Class = open(className + " Roster", "w")
         Class.close() #Closes the file
+    print("-"*os.get_terminal_size().columns )
+    print("\n")
 
 def addStudent():
     #Determines class file to access
@@ -22,7 +25,7 @@ def addStudent():
 
         #Writes new student information in file
         name = input("Type Student's Name:")
-        ID = input("Scan ID Card")
+        ID = getpass("Scan ID Card")
         Class.writelines([name, ",", ID, ",\n"]) #\n makes program go to next line
         while True:
             repeatFunction = input("Would you like to add another student? [Y/N]")
@@ -30,13 +33,16 @@ def addStudent():
                 break #Exits loop if "N" is given
             elif repeatFunction == "Y":
                 name = input("Type Student's Name:")
-                ID = input("Scan ID Card")
+                ID = getpass("Scan ID Card")
                 Class.writelines([name, ",", ID, ";\n"])
             else:
                 print("Invalid Input")
         Class.close()
     else:
         print("Invalid Input")
+    
+    print("-"*os.get_terminal_size().columns )
+    print("\n")
 
 def rosterList(className):
     roster = open(className +" Roster", "r") #Opens Class Roster File in reading mode
@@ -55,7 +61,7 @@ def classCheckin():
         lines = CheckIn.readlines()
         Present = []
         while True:
-            ID = input("Please Scan ID Card: ")
+            ID = getpass("Please Scan ID Card ")
             if ID == "exit":
                 break
             else:
@@ -80,6 +86,9 @@ def classCheckin():
     Attendence.write("Absent:\n")
     for item in absent:
         Attendence.write(item + "\n")
+    
+    print("-"*os.get_terminal_size().columns )
+    print("\n")
 
 
 def DisplayAttendence(AttendenceClass):
@@ -94,6 +103,9 @@ def DisplayAttendence(AttendenceClass):
             print(row)
     else:
         print("Attendence file does not exist.")
+    
+    print("-"*os.get_terminal_size().columns )
+    print("\n")
 
 def DisplayRoster(RosterClass):
     file = (RosterClass + " Roster")
@@ -110,6 +122,9 @@ def DisplayRoster(RosterClass):
             print(item + ",")
     else:
         print("Attendence file does not exist.")
+    
+    print("\n")
+    print("-"*os.get_terminal_size().columns )
 
 def deleteName(fileName):
     #Opens file in read mode; Stores data from file into lines
@@ -119,10 +134,26 @@ def deleteName(fileName):
 
     #Opens file in write mode(erases file in the process); Adds back names that need to be keeped
     file = open(fileName + " Roster", "w")
-    name = input("Type full name of student you wish to delete:")
+    name = input("Type full name of student you wish to delete: ")
     for line in lines: 
         if 0 == line.find(name): #Looks to see if name given is in line; find(name) give value of 0 if text is found
             print("Name Deleted")
         else:
             file.write(line) #Write stored data back into txt file
+    
+    print("\n")
+    print("-"*os.get_terminal_size().columns )
+    
+def removeClass():
+    file = input("Type class you wish to delete: ")
+    if os.path.exists(file + " Roster"):
+        os.remove(file + " Roster")
+        if os.path.exists(file + " Attendence"):
+            os.remove(file + " Attendence")
+    else:
+        print("The file does not exist.")
+    
+    print("\n")
+    print("-"*os.get_terminal_size().columns )
+
     
