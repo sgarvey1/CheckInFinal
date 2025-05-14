@@ -22,3 +22,7 @@ while True:
             ClassManager.DisplayRoster(input("Which class do you want to view?"))
         else:
             print("Invalid Input")
+    else:
+        print("Invalid Input")
+        print("-"*os.get_terminal_size().columns )
+        print("\n")
