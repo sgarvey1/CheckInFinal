@@ -145,6 +145,7 @@ def deleteName(fileName):
     print("-"*os.get_terminal_size().columns )
     
 def removeClass():
+    #Checks if file exist; then, deletes the file
     file = input("Type class you wish to delete: ")
     if os.path.exists(file + " Roster"):
         os.remove(file + " Roster")
