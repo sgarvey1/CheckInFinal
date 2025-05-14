@@ -5,7 +5,7 @@ now = datetime.datetime.now()
 
 def createClass():
     #Creates txt file for class roster
-    className = input("Type name of class you wish to create:")
+    className = input("Type name of class you wish to create: ")
     file = (className + " Roster")
     if os.path.isfile(file):  #Checks if file exists
         print("Class already exists.")
@@ -17,18 +17,18 @@ def createClass():
 
 def addStudent():
     #Determines class file to access
-    Choice = input("Which class would you like to add to?")
+    Choice = input("Type name of class you wish to add to: ")
     
     file = (Choice + " Roster")
     if os.path.isfile(file):  #Checks if file exists
         Class = open(file, "r+")
 
         #Writes new student information in file
-        name = input("Type Student's Name:")
+        name = input("Type Student's Name: ")
         ID = getpass("Scan ID Card")
         Class.writelines([name, ",", ID, ",\n"]) #\n makes program go to next line
         while True:
-            repeatFunction = input("Would you like to add another student? [Y/N]")
+            repeatFunction = input("Would you like to add another student? [Y/N]\n")
             if repeatFunction == "N":
                 break #Exits loop if "N" is given
             elif repeatFunction == "Y":
@@ -54,14 +54,14 @@ def rosterList(className):
 
 def classCheckin():
    #Determines class list which will be searched
-    Class = input("Which class do you want to take attendence for?")
+    Class = input("Type name of class you wish to take attendence for: ")
     file = (Class + " Roster")
     if os.path.isfile(file):  #Checks if file exists
         CheckIn = open(Class +" Roster", "r+")
         lines = CheckIn.readlines()
         Present = []
         while True:
-            ID = getpass("Please Scan ID Card ")
+            ID = getpass("Scan ID Card")
             if ID == "exit":
                 break
             else:
@@ -104,7 +104,7 @@ def DisplayAttendence(AttendenceClass):
     else:
         print("Attendence file does not exist.")
     
-    print("-"*os.get_terminal_size().columns )
+    print("-"*os.get_terminal_size().columns)
     print("\n")
 
 def DisplayRoster(RosterClass):
