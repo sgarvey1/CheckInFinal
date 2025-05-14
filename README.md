@@ -5,6 +5,8 @@ This check-in system uses an rfid reader that inputs data like a keyboard. The r
 
 When students are added, a name and ID vlaue from their access card are inserted into a Roster file. This file is referred back to during check-in. After check-in, an Attendence file is created or updated to include the names of people who are present. When attendence is displayed, these files are compared to determine who is absent and who is present.
 
+When running on a Raspberry Pi, the program must be run with admin priveledges or the program will fail to create and open files. In addition, the Check-In and Add Student function must be run locally through the Pi's terminal. This is because the rfid reader sends data as a keyboard input. The other functions can be used either locally or remotely through ssh.
+
 
 ## Features
 - Ability to add and delete classes
